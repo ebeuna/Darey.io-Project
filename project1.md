@@ -3,4 +3,4 @@
 `sudo apt update`
 `sudo systemctl apache2`
 `sudo apt install apache2`
-![apache](./image/Apache-status.png)
+![apache file](./image/Apache-status.png)
