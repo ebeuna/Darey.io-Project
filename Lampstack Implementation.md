@@ -42,7 +42,7 @@
 ![php -v](https://github.com/ebeuna/project-2/assets/140742446/cf393714-b5de-43a7-85cc-8c1d56a338ce)
 # Creating a virtual Host for my Website using Apache
 ## Step 4: Creating a virtual Host for my Website using Apache
-### Apache on ubuntu has one server block enabled by default that is configured to serve documents from the /var/www/htmldirectory. we will leave this configuration as it is and add our directory next to the default one and the directory is called *projectlamp* by running the command below. 
+### Apache on ubuntu has one server block enabled by default that is configured to serve documents from the /var/www/htmldirectory. we will leave this configuration as it is and add our directory next to the default one and the directory is called *projectlamp*. we need to run the command below. 
 ![Screenshot (40)](https://github.com/ebeuna/project-2/assets/140742446/014ba275-1316-481c-bffb-839b89c611ba)
 ### we need to assign ownership of the directory with the $USER environment variable by running the command below.
 ![Screenshot (42)](https://github.com/ebeuna/project-2/assets/140742446/72b280c6-4f3b-4d5d-9fb1-791828ecc0b9)
@@ -51,23 +51,18 @@
 ![Screenshot (43)](https://github.com/ebeuna/project-2/assets/140742446/09ab9079-4d91-4c2f-ad4d-a649e9f65519)
 ### The *ls* command was used to show the new file in the sites-available directory. 
 ![Screenshot (44)](https://github.com/ebeuna/project-2/assets/140742446/07d44ede-7335-4afd-8b47-74ac00b32358)
-sudo a2ensite projectlamp
-
-sudo a2dissite 000-default
-
-sudo apache2ctl configtest
-
-sudo systemctl reload apache2
+### Now with the virtual host configuration, we want to enable the new virtual host and to disable Apache default website. we also want to make sure that the configuration file doesnt contain *syntax error*. Finally we need to reload so all this changes take effect by running all the command as seen below.
 ![Screenshot (45)](https://github.com/ebeuna/project-2/assets/140742446/82011714-d2c7-43cc-9afe-afb73038378c)
 # Enable PHP on the Website
 ## Step 5: Enable PHP on the Website
-sudo vim /etc/apache2/mods-enabled/dir.conf
+### we need to change the default directory setting behaviour by editing the /etc/apache2/mods-enabled/dir.conf file and changing the order in which the index. php file is listed. in order to acheive this, we need to run the command below and change some directive.
 ![Screenshot (38)](https://github.com/ebeuna/project-2/assets/140742446/d201dd5e-e9cb-4a32-a4e3-3f8732e73359)
-sudo systemctl reload apache2
+### After changing and closing the file, we need to reload Apache so that the changes can take effect.
 ![Screenshot (41)](https://github.com/ebeuna/project-2/assets/140742446/acb35a4c-3bd5-46ce-a233-e46b446a112a)
-sudo vim /var/www/projectlamp/index.php
-![Screenshot (39)](https://github.com/ebeuna/project-2/assets/140742446/4e16718b-e9dd-47c0-b868-ee5184169a0d)
-Refereshing my public ip-51.20.9.40
+### Finally, we have to create a PHP test script to confirm that Apache is able to handle and process request for PHP files
+### Note: we have to create a new file named index.php inside our custom web root folder by running the command below. This will open a blank file. Add the following PHP code inside the file as shown below. press esc :wq! to save and exit the page.
+![Screenshot (39)](https://github.com/ebeuna/project-2/assets/140742446/4e167q!18b-e9dd-47c0-b868-ee5184169a0d)
+### Refereshing my public ip will give me this.
 ![Screenshot (32)](https://github.com/ebeuna/project-2/assets/140742446/493146c9-7026-42e8-8f3b-b2bf72026810)
 
 
