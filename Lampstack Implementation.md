@@ -61,7 +61,7 @@
 ![Screenshot (41)](https://github.com/ebeuna/project-2/assets/140742446/acb35a4c-3bd5-46ce-a233-e46b446a112a)
 ### Finally, we have to create a PHP test script to confirm that Apache is able to handle and process request for PHP files
 ### Note: we have to create a new file named index.php inside our custom web root folder by running the command below. This will open a blank file. Add the following PHP code inside the file as shown below. press esc :wq! to save and exit the page.
-![Screenshot (39)](https://github.com/ebeuna/project-2/assets/140742446/4e167q!18b-e9dd-47c0-b868-ee5184169a0d)
+![Screenshot (39)](https://github.com/ebeuna/project-2/assets/140742446/549cf5eb-4509-4c9d-89a9-7803f215288d)
 ### Refereshing my public ip will give me this.
 ![Screenshot (32)](https://github.com/ebeuna/project-2/assets/140742446/493146c9-7026-42e8-8f3b-b2bf72026810)
 
