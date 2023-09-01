@@ -1,12 +1,15 @@
 # File Manipulation
 ## 1. sudo command
-before I used this command, I tried to instal sudo in my Linux environmemt. then I innititated the command in the screenshot below.
+Before running the sudo command, I tired to upgrade my apt by running the command below.
 ![sudo apt upgrade](https://github.com/ebeuna/Linux-Practice-Project/assets/140742446/b43695dd-2cf6-4b58-8683-80077bd33cf5)
 ## 2. pwd command
+I used the command below to find the path of my current/present working directory
 ![IMG_20230811_141914_874](https://github.com/ebeuna/Linux-Practice-Project/assets/140742446/5aaf094c-5adc-4cf3-a4e2-7aab818f812b)
 ## 3. cd command
+This file is used to switch to a new directory. I run the command below to switch toa new directory *Document*
 ![cd](https://github.com/ebeuna/Linux-Practice-Project/assets/140742446/17e0e9dc-f3c7-45d8-96fa-73a890306755)
 ## 4. ls command
+This command list the file and directory within present working directory
 ![ls](https://github.com/ebeuna/Linux-Practice-Project/assets/140742446/82bc66ee-aabc-4b6b-8011-be67f993d6d6)
 ## 5. cat command
 ![cat](https://github.com/ebeuna/Linux-Practice-Project/assets/140742446/96b55220-9f42-44c2-816d-e32d41f4a38b)
