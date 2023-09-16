@@ -143,13 +143,15 @@ Bash allows you to define and use functions to group related commands together. 
 
 ![Alt text](images/nano.png)
 
-A little bit about code block. The script prompts for your name. Whwn you type your name, it displays the text *hello! Nice to meet you.* Also, `#!/bin/bash` helps you specify the type of bash interpreter to be used to execute the script.
+A little bit about code block. The script prompts for your name. When you type your name, it displays the text *hello! Nice to meet you.* Also, `#!/bin/bash` helps you specify the type of bash interpreter to be used to execute the script.
 
 **step 4:**  save your file
 
-**step 5:**  Run the command sudo chmod +x user-input.sh this makes the file executable
+**step 5:**  Run the command `sudo chmod +x user-input.sh` this makes the file executable
 
-**step 6:** Run the script using the command ./user-input.sh
+**step 6:** Run the script using the command `./user-input.sh`
+
+![Alt text](images/user.sh.png)
 
 ## DIRECTORY MANIPULATION AND NAVIGATION
 
