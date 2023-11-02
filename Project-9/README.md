@@ -23,6 +23,7 @@ Generally, web, or mobile solutions are implemented based on what is called the 
 **Three-tier-Architecture** is a client-server software architecture pattern that compromise three seperate layers: 
 
 ![Alt text](images/3-tier.png)
+
 1. **Presentation Layer (PL):** This is the user interface such as the client server or browser on your laptop.
 
 2. **Business Layer (BL):** This is the backend programe that implements business logic Application or Webserver.
@@ -54,15 +55,19 @@ Let us get started!
 1. Launch an EC2 instance that will serve as "Web server". Create 3 volume in thesame AZ as your Web Server EC2, each of 10GIB.
 
 ![Alt text](<images/create volume.png>)
+
 2. Attach all three volumes one by one to your Web Server EC2 instance.
 
 ![Alt text](<images/attach volume.png>)
+
 ![Alt text](<images/attach vol. 2.png>)
+
 3. Open up the Linux terminal to begin configuration
 
 4. Use `lsblk` command to inspect what block devices are attached to the server. Notice names of your newly created devices. All devices in Linux reside in /dev/ directory. Inspect it with `ls /dev/` and make sure you see all 3 newly created block devices there -their names will likely be `nvme1n1`, `nvme2n1`, `nvme3n1`. 
 
 ![Alt text](images/space.png)
+
 5. Use `df -h` command to see all mounts and free space on your server
 
 6. Use `gdisk` utility to create a single partition on each of the 3 disks
@@ -70,12 +75,15 @@ Let us get started!
 `sudo gdisk /dev/nvme1n1`
 
 ![Alt text](images/nvmwini.png)
+
 7. Use `lsblk` utility to view the newly configured partition on each of the 3 disks.
 
 ![Alt text](images/partition.png)
+
 8. Install `lvm2` package using `sudo yum install lvm2`. Run `sudo lvmdiskscan` command to check for available partitions.
 
 ![Alt text](images/lvw.png)
+
 **Note:** Previously, in Ubuntu we usea `apt` command to install packages, in RedHat/CentOS a different package manager is used, so we shall use `yum` command instead.
 
 9. Use `pvcreate` utility to mark each of 3 disks as physical volumes (PVs) to be used by LVM.
@@ -89,6 +97,7 @@ Let us get started!
 10. Verify that your physical volume has been created sucessfully by running `sudo pvs`
 
 ![Alt text](images/vmg.png)
+
 11. Use `vgcreate` utility to add all 3 PVs to a volume group (VG). Name the VG **webdata-vg**
 
 `sudo vgcreate webdata-vg /dev/nvme1n1p1 /dev/nvme2n1p1 /dev/nvme3n1p1`
@@ -96,6 +105,7 @@ Let us get started!
 12. Verify that your VG has been created sucessfully by running `sudo vgs`
 
 ![Alt text](images/vgs.png)
+
 13. Use `lvcreate` utility to create 2 logical volumes. **apps-lv *(Use half of the PV size),* and logs-lv *(Use the remaining space of the PV size).* NOTE:** apps-lv will be used to store data for the website while, logs-lv will be used to store data for logs.
 
 `sudo lvcreate -n apps-lv -L 14G webdata-vg`
@@ -105,6 +115,7 @@ Let us get started!
 14. Verify that your Logical Volume has been created sucessfully by running `sudo lvs`
 
 ![Alt text](images/lvs.png)
+
 15. Verify the entire setup
 
 `sudo vgdisplay -v #view complete setup - VG, PV, and LV`
@@ -112,6 +123,7 @@ Let us get started!
 `sudo lsblk` 
 
 ![Alt text](images/vgdisplay.png)
+
 16. Use `mkfs.ext4` to format the logical volumes with ext4 filesystem
 
 `sudo mkfs -t ext4 /dev/webdata-vg/apps-lv`
@@ -149,11 +161,13 @@ The UUID of the device will be used to update the `/etc/fstab` file;
 `sudo blkid`
 
 ![Alt text](<images/sudo blkid.png>)
+
 sudo vi `/etc/fstab`
 
 Update `/etc/fstab` in this format using your own UUID and remember to remove the leading and ending quotes.
 
 ![Alt text](vi-etc-fstab.png)
+
 24. Test the configuration and reload the daemon
 
 `sudo mount -a`
@@ -187,6 +201,7 @@ Launch a second RedHat EC2 instance that will have a role -DB server, Repeat the
 `sudo systemctl start httpd`
 
 ![Alt text](images/redhat.png)
+
 4. To install PHP and its dependencies
 
 `sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm`
@@ -268,6 +283,7 @@ FLUSH PRIVILEGES;`
  **Note:** My database MySQL server security port is opened for all traffic
 
  ![Alt text](<images/all traffic.png>)
+
  1. Install MySQL client and test that you can connect from your webserver to your DB server by using `mysql-client`
 
  `sudo yum install mysql`
@@ -281,9 +297,10 @@ enable
 4. Enable TCP port 80 in Inbound Rules configuration for your Web Server EC2 (enable from everywhere 0.0.0.0/0 or from your workstation's IP)
 
 5. Try to access from your browser the link to your WordPress `http://<web-server-Public-IP-Address>/wordpress/`
-
 ![Alt text](images/wordpress.png)
+
 ![Alt text](<images/wordpress 2.png>)
+
 ![Alt text](<images/wordpress 3.png>)
 
 Congratulations
